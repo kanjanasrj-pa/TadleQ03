@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TableQ | Restaurant Table Reservation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=25">
+</head>
+<body class="intro" data-view="home">
+  <header class="topbar">
+    <h1>TableQ</h1>
+    <nav class="main-nav">
+      <button data-page="home">หน้าหลัก</button>
+      <button data-page="availability" data-role-nav="customer">เลือกวันเวลา</button>
+      <button data-page="mybooking" data-role-nav="customer">ตรวจสอบการจอง</button>
+      <button data-page="admin" data-role-nav="admin" hidden>สำหรับร้านอาหาร</button>
+      <button class="active" data-admin-tab="dashboard" data-role-nav="admin" hidden>Dashboard</button>
+      <button data-admin-tab="reservations" data-role-nav="admin" hidden>รายการจอง</button>
+      <button data-admin-tab="tables" data-role-nav="admin" hidden>จัดการโต๊ะอาหาร</button>
+      <button data-admin-tab="deposit" data-role-nav="admin" hidden>ตั้งค่ามัดจำ</button>
+      <button data-admin-tab="hours" data-role-nav="admin" hidden>เวลาทำการ</button>
+      <button class="nav-admin" id="authButton">เข้าสู่ระบบ</button>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="เปิดเมนู"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  </header>
+
+  <main>
+    <section id="home" class="page active">
+      <div class="hero">
+        <div class="hero-shade"></div>
+        <div class="hero-content">
+          <p class="eyebrow">GOOD FOOD · GOOD TIME · TOGETHER</p>
+          <a class="brand" href="#" data-page="home"><img class="brand-logo" src="images/logo.png" alt="TableQ"><span></span></a>
+          <h2>จองโต๊ะง่าย ๆ อร่อยได้ทันที</h2>
+          <p>เลือกวัน เวลา และโต๊ะที่ใช่สำหรับมื้อพิเศษของคุณ</p>
+          <div class="hero-actions">
+            <button class="btn primary" data-page="availability">จองโต๊ะเลย</button>
+            <button class="btn outline-light" data-page="table-status">ตรวจสอบโต๊ะว่าง</button>
+          </div>
+        </div>
+        <div class="info-strip">
+        <div><span class="info-icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><div><b>เวลาเปิด–ปิด</b><p>11:00–22:00 น. (ทุกวัน)</p></div></div>
+        <div><span class="info-icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><div><b>ที่ตั้งร้าน</b><p>123 ถนนมิตรภาพ, ขอนแก่น</p></div></div>
+        <div><span class="info-icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="m9 16 2 2 4-4"/></svg></span><div><b>จองสะดวก</b><p>เลือกโต๊ะได้ด้วยตัวเอง</p></div></div>
+      </div>
+      </div>
+      <section class="content-section explore">
+        <div class="section-heading"><div><p class="eyebrow"></p><h2>เมนูแนะนำ</h2></div><span class="muted"></span></div>
+        <div class="menu-tabs">
+          <button class="menu-tab active" data-cat="all">ทั้งหมด</button>
+          <button class="menu-tab" data-cat="meat">เนื้อ</button>
+          <button class="menu-tab" data-cat="dessert">ของหวาน</button>
+          <button class="menu-tab" data-cat="seafood">ทะเล</button>
+        </div>
+        <!-- ใส่รูปเอง: เพิ่ม <img src="รูป.jpg" alt=""> ไว้ใน .food (หรือใส่ style="background-image:url(รูป.jpg)") -->
+        <div class="menu-grid">
+          <article class="menu-card" data-cat="meat"><div class="food food-one"><img src="images/menu-1.png" alt="สเต็กเนื้อแกะ"></div><h3>สเต็กเนื้อแกะ</h3><p>เนื้อแกะพรีเมียม</p></article>
+          <article class="menu-card" data-cat="seafood"><div class="food food-two"><img src="images/menu-2.png" alt="ปูอลาสก้า"></div><h3>ปูอลาสก้า</h3><p>เนื้อนุ่มเด้ง สดใหม่</p></article>
+          <article class="menu-card" data-cat="meat"><div class="food food-three"><img src="images/menu-3.png" alt="สเต็กเนื้อโกเบ"></div><h3>สเต็กเนื้อโกเบ</h3><p>นำเข้าจากญี่ปุ่น</p></article>
+          <article class="menu-card" data-cat="seafood"><div class="food food-one"><img src="images/menu-4.png" alt="คาเวียร์"></div><h3>คาเวียร์</h3><p>หรูหรา เสิร์ฟเย็น</p></article>
+          <!-- ช่องที่ 5: ใส่รูปแทนอีโมจิ เช่น <img src="images/menu-5.png" alt=""> -->
+          <article class="menu-card" data-cat="dessert"><div class="food food-two"><img src="images/menu-5.png" alt="บาสก์ชีสเค้กเบอร์รี่"></div><h3>บาสก์ชีสเค้กซอสเบอร์รี่</h3><p>เนื้อนุ่มละมุน ตกแต่งทองคำ</p></article>
+          <!-- ช่องที่ 6: ใส่รูปแทนอีโมจิ เช่น <img src="images/menu-6.png" alt=""> -->
+          <article class="menu-card" data-cat="dessert"><div class="food food-three"><img src="images/menu-6.png" alt="ซูเฟล่ช็อกโกแลต"></div><h3>ซูเฟล่ช็อกโกแลตเบอร์รี่</h3><p>ร้อนนุ่ม เสิร์ฟพร้อมซอสเบอร์รี่</p></article>
+        </div>
+      </section>
+    </section>
+
+    <section id="availability" class="page">
+      <div class="page-heading"><h1>เลือกวันและเวลา</h1><p>เลือกวันที่และรอบเวลาที่ต้องการ ระบบจะแสดงจำนวนโต๊ะที่ว่าง</p></div>
+      <div class="stepper"><span class="step current">1 <small>เลือกวันเวลา</small></span><i></i><span class="step">2 <small>เลือกโต๊ะ</small></span><i></i><span class="step">3 <small>กรอกข้อมูล</small></span><i></i><span class="step">4 <small>ยืนยัน</small></span><i></i><span class="step">5 <small>ชำระมัดจำ</small></span></div>
+      <div class="booking-layout">
+        <div class="panel calendar-panel">
+          <div class="panel-title"><h2>วันที่ต้องการจอง</h2><span class="muted">เลือกวันที่</span></div>
+          <label for="bookingDate">วันที่เข้ารับประทาน</label>
+          <input id="bookingDate" type="date" value="2026-10-28">
+          <div class="calendar-note"><span class="dot green"></span> เปิดจอง <span class="dot red"></span> เต็ม/ปิด <span class="dot gray"></span> วันที่ผ่านมา</div>
+          <label for="guestCount">จำนวนผู้เข้ารับประทาน</label>
+          <select id="guestCount"><option value="2">2 คน</option><option value="1">1 คน</option><option value="3">3 คน</option><option value="4">4 คน</option><option value="5">5 คน</option><option value="6">6 คน</option></select>
+        </div>
+        <div class="panel time-panel">
+          <div class="panel-title"><h2>เลือกช่วงเวลา</h2><span class="muted">11:00–22:00 น.</span></div>
+          <div class="time-grid" id="timeGrid">
+            <button class="time-slot" data-time="11:00">11:00 น.</button><button class="time-slot" data-time="12:00">12:00 น.</button>
+            <button class="time-slot" data-time="13:00">13:00 น.</button><button class="time-slot" data-time="14:00">14:00 น.</button>
+            <button class="time-slot" data-time="17:00">17:00 น.</button><button class="time-slot selected" data-time="18:00">18:00 น.</button>
+            <button class="time-slot" data-time="19:00">19:00 น.</button><button class="time-slot" data-time="20:00">20:00 น.</button>
+            <button class="time-slot" data-time="21:00">21:00 น.</button>
+          </div>
+          <div class="availability-summary"><span class="big-icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><div><b id="availableCount">6 โต๊ะว่าง</b><p id="availabilityHint">สำหรับวันที่และเวลาที่เลือก</p></div></div>
+          <button class="btn primary full" id="toTables">ไปเลือกโต๊ะ →</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="table-status" class="page">
+      <div class="page-heading"><h1>ตรวจสอบโต๊ะว่าง</h1><p>เลือกวัน เวลา และจำนวนคน เพื่อดูว่าโต๊ะไหนว่างอยู่ ไม่ต้องเข้าสู่ระบบ</p></div>
+      <div class="panel status-controls">
+        <div class="field"><label for="statusDate">วันที่</label><input id="statusDate" type="date"></div>
+        <div class="field"><label for="statusTime">เวลา</label><select id="statusTime"><option>11:00</option><option>12:00</option><option>13:00</option><option>14:00</option><option>17:00</option><option selected>18:00</option><option>19:00</option><option>20:00</option><option>21:00</option></select></div>
+        <div class="field"><label for="statusGuests">จำนวนคน</label><select id="statusGuests"><option value="1">1 คน</option><option value="2" selected>2 คน</option><option value="3">3 คน</option><option value="4">4 คน</option><option value="5">5 คน</option><option value="6">6 คน</option></select></div>
+      </div>
+      <div class="legend"><span><i class="legend-box available"></i> ว่าง</span><span><i class="legend-box booked"></i> จองแล้ว</span><span><i class="legend-box disabled"></i> ปิดใช้งาน / ที่นั่งไม่พอ</span></div>
+      <div class="panel status-board">
+        <div class="panel-title"><h2>สถานะโต๊ะ</h2><span class="muted" id="statusCount"></span></div>
+        <div id="statusGrid" class="table-grid"></div>
+        <button type="button" class="btn primary full" id="statusBook">จองโต๊ะตามที่เลือก →</button>
+        <p class="fine-print" style="text-align:center">การจองต้องเข้าสู่ระบบก่อน</p>
+      </div>
+    </section>
+
+    <section id="select-table" class="page">      <div class="page-heading"><h1>เลือกโต๊ะ</h1><p>เลือกโต๊ะที่เหมาะกับจำนวนผู้เข้ารับประทาน</p></div>
+      <div class="booking-summary" id="tableSummary">28 ต.ค. 2569 · 18:00 น. · 2 คน</div>
+      <div class="legend"><span><i class="legend-box available"></i> ว่าง</span><span><i class="legend-box chosen"></i> โต๊ะที่เลือก</span><span><i class="legend-box booked"></i> จองแล้ว</span><span><i class="legend-box disabled"></i> ปิดใช้งาน</span></div>
+      <div class="table-layout">
+        <div class="panel"><div class="panel-title"><h2>แผนผังโต๊ะอาหาร</h2><span class="muted">เลือกได้ 1 โต๊ะ</span></div><div id="tableGrid" class="table-grid"></div></div>
+        <aside class="panel selected-table-panel"><p class="eyebrow">YOUR TABLE</p><h2>โต๊ะที่เลือก</h2><div id="selectedTablePreview" class="table-preview">ยังไม่ได้เลือกโต๊ะ</div><p id="selectedCapacity" class="muted">เลือกโต๊ะจากแผนผัง</p><button id="toForm" class="btn primary full" disabled>กรอกข้อมูลการจอง →</button><button class="btn secondary full" data-page="availability">← กลับไปเลือกวันเวลา</button></aside>
+      </div>
+    </section>
+
+    <section id="booking-form" class="page">
+      <div class="page-heading"><h1>กรอกข้อมูลผู้จอง</h1><p>กรอกข้อมูลให้ครบถ้วนก่อนตรวจสอบรายละเอียด</p></div>
+      <div class="stepper"><span class="step done">1 <small>วันเวลา</small></span><i></i><span class="step done">2 <small>เลือกโต๊ะ</small></span><i></i><span class="step current">3 <small>กรอกข้อมูล</small></span><i></i><span class="step">4 <small>ยืนยัน</small></span><i></i><span class="step">5 <small>ชำระมัดจำ</small></span></div>
+      <form id="reservationForm" class="panel form-panel">
+        <h2>ข้อมูลผู้จอง</h2>
+        <div class="form-grid">
+          <div class="field"><label for="customerName">ชื่อ-นามสกุล *</label><input id="customerName" name="customerName" required placeholder="เช่น กาญจนา ศรีจันทร์"></div>
+          <div class="field"><label for="customerPhone">เบอร์โทรศัพท์ *</label><input id="customerPhone" name="customerPhone" required inputmode="tel" pattern="[0-9+() -]{9,15}" placeholder="เช่น 0812345678"></div>
+          <div class="field"><label for="customerEmail">อีเมล (ไม่บังคับ)</label><input id="customerEmail" name="customerEmail" type="email" placeholder="example@email.com"></div>
+          <div class="field"><label for="guestNote">หมายเหตุพิเศษ</label><input id="guestNote" name="guestNote" placeholder="เช่น ขอเก้าอี้เด็ก"></div>
+        </div>
+        <div class="booking-summary" id="formSummary"></div>
+        <div class="form-actions"><button type="button" class="btn secondary" data-page="select-table">← กลับ</button><button type="submit" class="btn primary">ตรวจสอบและยืนยัน →</button></div>
+      </form>
+    </section>
+
+    <section id="booking-confirm" class="page">
+      <div class="page-heading"><h1>ยืนยันการจอง</h1><p>ตรวจสอบข้อมูลให้ถูกต้องก่อนบันทึกรายการ</p></div>
+      <div class="panel confirmation-panel"><div class="success-mark"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div><h2>ตรวจสอบรายละเอียดการจอง</h2><p class="muted">โปรดตรวจสอบข้อมูลก่อนกดยืนยัน</p><div id="confirmDetails" class="detail-list"></div><div class="late-notice"><b>กรุณามาถึงร้านตรงเวลา</b><span>หากมาสายเกิน 10 นาที การจองจะถูกยกเลิกและโต๊ะจะถูกปล่อยให้ลูกค้าท่านอื่น โดยไม่คืนค่ามัดจำ</span></div><div class="form-actions"><button class="btn secondary" data-page="booking-form">← กลับไปแก้ไข</button><button id="confirmBooking" class="btn primary">ไปชำระมัดจำ →</button></div><p class="fine-print">ข้อมูลการจองถูกบันทึกบน Firebase</p></div>
+    </section>
+
+    <section id="booking-payment" class="page">
+      <div class="page-heading"><h1>ชำระค่ามัดจำ</h1><p>ชำระมัดจำเพื่อยืนยันการจองโต๊ะของคุณ</p></div>
+      <div class="stepper"><span class="step done">1 <small>วันเวลา</small></span><i></i><span class="step done">2 <small>เลือกโต๊ะ</small></span><i></i><span class="step done">3 <small>กรอกข้อมูล</small></span><i></i><span class="step done">4 <small>ยืนยัน</small></span><i></i><span class="step current">5 <small>ชำระมัดจำ</small></span></div>
+      <div class="panel payment-panel">
+        <div class="deposit-box"><span>ยอดมัดจำที่ต้องชำระ</span><strong id="depositAmount">฿200</strong><small id="depositCalc"></small></div>
+        <p class="muted pay-summary" id="paySummary"></p>
+        <div class="pay-methods">
+          <button type="button" class="pay-method active" data-method="card">บัตรเครดิต / เดบิต</button>
+          <button type="button" class="pay-method" data-method="qr">QR พร้อมเพย์</button>
+        </div>
+        <div id="cardForm" class="pay-form">
+          <div class="credit-card"><div class="cc-chip"></div><div class="cc-number" id="ccNumber">•••• •••• •••• ••••</div><div class="cc-row"><span id="ccName">ชื่อบนบัตร</span><span id="ccExp">MM/YY</span></div></div>
+          <div class="field"><label for="cardNumber">เลขบัตร</label><input id="cardNumber" inputmode="numeric" autocomplete="off" placeholder="1234 5678 9012 3456"></div>
+          <div class="field"><label for="cardName">ชื่อบนบัตร</label><input id="cardName" autocomplete="off" placeholder="เช่น KANCHANA SRICHAN"></div>
+          <div class="form-grid"><div class="field"><label for="cardExp">วันหมดอายุ</label><input id="cardExp" inputmode="numeric" autocomplete="off" placeholder="MM/YY"></div><div class="field"><label for="cardCvv">CVV</label><input id="cardCvv" type="password" inputmode="numeric" autocomplete="off" placeholder="•••"></div></div>
+        </div>
+        <div id="qrBox" class="qr-box" hidden>
+          <div id="qrCode" class="qr-code"></div>
+          <p class="qr-amount">สแกนเพื่อชำระ <b id="qrAmount"></b></p>
+          <p class="muted">QR หมดอายุใน <b id="qrTimer">5:00</b></p>
+        </div>
+        <div class="late-notice"><b>มาสายเกิน 10 นาที</b><span>การจองจะถูกยกเลิกและไม่คืนค่ามัดจำ</span></div>
+        <label class="agree"><input type="checkbox" id="payAgree"> <span>รับทราบว่าค่ามัดจำ<b>ไม่สามารถขอคืนได้ทุกกรณี</b> หากยกเลิกการจอง</span></label>
+        <div class="form-actions"><button type="button" class="btn secondary" data-page="booking-confirm">← กลับ</button><button type="button" id="payNow" class="btn primary">ชำระมัดจำ</button></div>
+        <p class="fine-print">ระบบชำระเงินจำลองสำหรับต้นแบบ ไม่มีการตัดเงินจริง และไม่เก็บเลขบัตรเต็มหรือ CVV ไว้ (เก็บเฉพาะ 4 ตัวท้าย) · บัตรทดสอบ 4242 4242 4242 4242</p>
+      </div>
+    </section>
+
+    <section id="booking-success" class="page">      <div class="panel success-panel"><div class="success-mark"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div><p class="eyebrow">BOOKING COMPLETED</p><h1>ยืนยันการจองสำเร็จ!</h1><p>ขอบคุณที่เลือกใช้บริการ TableQ</p><p class="muted">หมายเลขการจองของคุณ</p><div id="successCode" class="booking-code"></div><div id="successDetails" class="detail-list"></div><div class="hero-actions centered"><button class="btn primary" data-page="mybooking">ดูการจองของฉัน</button><button class="btn secondary" data-page="home">กลับหน้าหลัก</button></div></div>
+    </section>
+
+    <section id="login" class="page">
+      <div class="page-heading"><p class="eyebrow">ACCOUNT</p><h1>เข้าสู่ระบบ</h1><p>ลูกค้าเข้าสู่ระบบเพื่อจองโต๊ะ · ร้านอาหารเข้าสู่ระบบเพื่อจัดการร้าน</p></div>
+      <div class="panel form-panel">
+        <form id="customerLogin" class="auth-form">
+          <div class="field"><label for="loginPhone">เบอร์โทรศัพท์ *</label><input id="loginPhone" required inputmode="tel" autocomplete="username" placeholder="เช่น 0812345678"></div>
+          <div class="field"><label for="loginPassword">รหัสผ่าน *</label><input id="loginPassword" type="password" required></div>
+          <button type="submit" class="btn primary full">เข้าสู่ระบบ</button>
+          <p class="auth-switch">ยังไม่มีบัญชี? <button type="button" class="auth-link" data-auth-tab="register">สมัครสมาชิก</button></p>
+          <p class="auth-switch auth-staff"><button type="button" class="auth-link" data-auth-tab="adminLogin">สำหรับร้านอาหาร</button></p>
+        </form>
+        <form id="register" class="auth-form" hidden>
+          <div class="form-grid">
+            <div class="field"><label for="regName">ชื่อ-นามสกุล *</label><input id="regName" required placeholder="เช่น กาญจนา ศรีจันทร์"></div>
+            <div class="field"><label for="regPhone">เบอร์โทรศัพท์ *</label><input id="regPhone" required inputmode="tel" pattern="[0-9+() -]{9,15}" placeholder="เช่น 0812345678"></div>
+            <div class="field"><label for="regEmail">อีเมล (ไม่บังคับ)</label><input id="regEmail" type="email" placeholder="example@email.com"></div>
+            <div class="field"><label for="regPassword">รหัสผ่าน * (อย่างน้อย 6 ตัว)</label><input id="regPassword" type="password" required minlength="6"></div>
+          </div>
+          <button type="submit" class="btn primary full">สมัครสมาชิกและเข้าสู่ระบบ</button>
+          <p class="auth-switch">มีบัญชีอยู่แล้ว? <button type="button" class="auth-link" data-auth-tab="customerLogin">เข้าสู่ระบบ</button></p>
+        </form>
+        <form id="adminLogin" class="auth-form" hidden>
+          <div class="field"><label for="adminUser">อีเมลร้านอาหาร *</label><input id="adminUser" required autocomplete="username" placeholder="เช่น admin@tableq.app"></div>
+          <div class="field"><label for="adminPassword">รหัสผ่าน *</label><input id="adminPassword" type="password" required autocomplete="current-password"></div>
+          <button type="submit" class="btn primary full">เข้าสู่ระบบร้านอาหาร</button>
+          <p class="fine-print">บัญชีร้านอาหารสร้างโดยเจ้าของระบบใน Firebase Console</p>
+          <p class="auth-switch"><button type="button" class="auth-link" data-auth-tab="customerLogin">← กลับไปเข้าสู่ระบบลูกค้า</button></p>
+        </form>
+        <p class="fine-print">บัญชีและข้อมูลการจองถูกเก็บบน Firebase</p>
+      </div>
+    </section>
+
+    <section id="profile" class="page">
+      <div class="page-heading"><p class="eyebrow">MY PROFILE</p><h1>โปรไฟล์ของฉัน</h1><p>จัดการข้อมูลส่วนตัวและรหัสผ่านของบัญชี</p></div>
+      <div class="profile-layout">
+        <aside class="panel profile-summary">
+          <div class="pm-avatar big" id="profAvatar"></div>
+          <h2 id="profName"></h2>
+          <p class="muted" id="profRole"></p>
+          <div class="profile-login"><span id="profLoginLabel">เบอร์ที่ใช้เข้าสู่ระบบ</span><strong id="profLoginId"></strong></div>
+        </aside>
+        <div class="profile-forms">
+          <form id="profileForm" class="panel">
+            <h2>ข้อมูลส่วนตัว</h2>
+            <div class="form-grid">
+              <div class="field"><label for="profFormName">ชื่อ-นามสกุล *</label><input id="profFormName" required placeholder="เช่น กาญจนา ศรีจันทร์"></div>
+              <div class="field"><label for="profFormPhone">เบอร์โทรศัพท์ติดต่อ *</label><input id="profFormPhone" required inputmode="tel" pattern="[0-9+() -]{9,15}" placeholder="เช่น 0812345678"></div>
+              <div class="field"><label for="profFormEmail">อีเมล (ไม่บังคับ)</label><input id="profFormEmail" type="email" placeholder="example@email.com"></div>
+            </div>
+            <p class="fine-print">เบอร์ติดต่อใช้กรอกในใบจองและให้ร้านติดต่อกลับ การเปลี่ยนเบอร์นี้ไม่ทำให้เบอร์ที่ใช้เข้าสู่ระบบเปลี่ยนตาม</p>
+            <button type="submit" class="btn primary full">บันทึกข้อมูล</button>
+          </form>
+          <form id="passwordForm" class="panel">
+            <h2>เปลี่ยนรหัสผ่าน</h2>
+            <div class="field"><label for="pwCurrent">รหัสผ่านปัจจุบัน *</label><input id="pwCurrent" type="password" required autocomplete="current-password"></div>
+            <div class="form-grid">
+              <div class="field"><label for="pwNew">รหัสผ่านใหม่ * (อย่างน้อย 6 ตัว)</label><input id="pwNew" type="password" required minlength="6" autocomplete="new-password"></div>
+              <div class="field"><label for="pwConfirm">ยืนยันรหัสผ่านใหม่ *</label><input id="pwConfirm" type="password" required minlength="6" autocomplete="new-password"></div>
+            </div>
+            <button type="submit" class="btn primary full">เปลี่ยนรหัสผ่าน</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <section id="mybooking" class="page">
+      <div class="page-heading"><p class="eyebrow">MY RESERVATIONS</p><h1>ตรวจสอบการจองของฉัน</h1><p>ค้นหาด้วยรหัสการจองหรือเบอร์โทรศัพท์ที่ใช้จอง</p></div>
+      <div class="panel lookup-panel"><div class="lookup-row"><input id="lookupInput" placeholder="กรอกรหัสการจองหรือเบอร์โทรศัพท์"><button class="btn primary" id="lookupButton">ค้นหา</button></div><div id="lookupResults" class="reservation-list"></div></div>
+    </section>
+
+    <section id="admin" class="page">
+      <div class="admin-layout">
+        <aside class="admin-sidebar"><div class="admin-brand"><img src="images/logo.png" alt=""><span>TableQ<small>Restaurant Admin</small></span></div><button class="admin-link active" data-admin-tab="dashboard"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>Dashboard</button><button class="admin-link" data-admin-tab="reservations"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>รายการจอง</button><button class="admin-link" data-admin-tab="tables"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3"/><path d="M3 16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V11a2 2 0 0 0-4 0z"/><path d="M5 18v2M19 18v2"/></svg>จัดการโต๊ะอาหาร</button><button class="admin-link" data-admin-tab="deposit"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>ตั้งค่ามัดจำ</button><button class="admin-link" data-admin-tab="hours"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>เวลาทำการ</button><button class="admin-link" data-page="home"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 19-7-7 7-7M19 12H5"/></svg>กลับหน้าลูกค้า</button></aside>
+        <div class="admin-main">
+          <div class="admin-top"><div><p class="eyebrow">TABLEQ MANAGEMENT</p><h1 id="adminTitle">ภาพรวมร้านอาหาร</h1></div><span class="admin-pill">Admin</span></div>
+          <div id="adminContent"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="welcome" class="welcome" hidden>
+    <div class="loader" role="status" aria-label="กำลังโหลด"><i></i><span>กำลังโหลด...</span></div>
+  </div>
+  <div id="profileMenu" class="pm-overlay" hidden>
+    <div class="pm-panel" role="menu" aria-label="เมนูโปรไฟล์">
+      <button type="button" class="pm-card" data-pm="profile"><span class="pm-avatar" id="pmAvatar"></span><span><b id="pmName"></b><small id="pmRole"></small></span></button>
+      <div class="pm-sep"></div>
+      <button type="button" class="pm-row" data-pm="profile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg><span>ข้อมูลส่วนตัว</span><svg class="ico chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+      <button type="button" class="pm-row" data-pm="security"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.5" cy="15.5" r="4.5"/><path d="m10.7 12.3 9.8-9.8M16 7l3 3"/></svg><span>เปลี่ยนรหัสผ่าน</span><svg class="ico chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+      <button type="button" class="pm-row" data-pm="logout"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg><span>ออกจากระบบ</span></button>
+    </div>
+  </div>
+  <div id="confirmModal" class="modal" hidden>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+      <h3 id="confirmTitle">ออกจากระบบ</h3>
+      <p id="confirmText">ต้องการออกจากระบบหรือไม่?</p>
+      <div class="modal-actions"><button type="button" class="btn secondary" id="confirmNo">ยกเลิก</button><button type="button" class="btn primary" id="confirmYes">ออกจากระบบ</button></div>
+    </div>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <script src="script.js?v=14"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
